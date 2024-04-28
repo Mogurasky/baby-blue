@@ -1,1 +1,20 @@
-
+version: "3"
+services:
+    devcontainer:
+        build:
+            context: .
+            dockerfile: .devcontainer/Dockerfile
+        environment:
+            TZ: Asia/Tokyo
+            MYSQL_USER: developer
+            MYSQL_PASSWORD: password
+            MYSQL_HOST: mysql:3306
+            # localstack
+            LOCALSTACK_HOST: localstack:4566
+            DEFAULT_REGION: ap-northeast-1
+            AWS_ACCOUNT_ID: "000000000000"
+            AWS_ACCESS_KEY_ID: dummy-access-key
+            AWS_SECRET_ACCESS_KEY: dummy-secret-key
+        volumes:
+            - ..:/workspaces:cached
+        command: /bin/sh -c "while sleep 1000; do :; done"
