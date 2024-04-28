@@ -1,0 +1,42 @@
+{
+    "name": "sample-app",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "service": "devcontainer",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "postCreateCommand": "sh .devcontainer/post-create.sh",
+    "features": {
+        "ghcr.io/devcontainers/features/go:1": {
+            "version": "latest"
+        },
+        // ホストマシンのDockerを利用するための設定
+        "docker-from-docker": {
+            "version": "latest"
+        },
+        // Jetbrains Gateway Codespaces用
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
+        }
+    },
+    "settings": {
+        "editor.guides.bracketPairs": true,
+        "editor.stickyScroll.enabled": true,
+        "editor.stickyScroll.maxLineCount": 5,
+        "workbench.colorCustomizations": {
+            "editorStickyScroll.background": "#00708D",
+            "editorStickyScrollHover.background": "#59A2B5"
+        },
+        "editor.formatOnSave": true,
+        "[go]": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "golang.go"
+        },
+        "go.formatTool": "gofmt"
+    },
+    "extensions": [
+        "golang.go",
+        "GitHub.vscode-pull-request-github",
+        "GitHub.copilot"
+    ]
+}
